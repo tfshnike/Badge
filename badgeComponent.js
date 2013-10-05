@@ -11,6 +11,12 @@ Ext.ux.Badge = Ext.extend(Ext.BoxComponent, {
     baseCls: 'ux-badge',
 
     /**
+    * @cfg {String} position
+    * The position is used to anchor to the container (defaults to undefined)
+    */
+    position: undefined,
+
+    /**
     * @cfg {Boolean} animate
     * True to animate the badge during transitions (defaults to true)
     */
@@ -49,7 +55,10 @@ Ext.ux.Badge = Ext.extend(Ext.BoxComponent, {
     	var me = this;
         Ext.ux.Badge.superclass.afterRender.call(me);
         if(me.value){
-            me.updateText(me.value, true);
+            me.el.update(me.value);
+        }
+        if (me.position) {
+        	me.anchorTo(me.position);
         }
     },
 
