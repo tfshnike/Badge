@@ -2,9 +2,10 @@ var EL = Ext.Element;
 //Ext.get('elid').addBadge(5, 'br-br', null, true)
 EL.addMethods({
 	addBadge: function(num, position, offset, animate, monitorScroll, callback) {
-		var me = this, badge = null, shouldUpdateNum = false, originalNum = me.badge.num;
+		var me = this, badge = null, shouldUpdateNum = false, originalNum = 0;
 		me.badge = me.badge || me.createChild({tag: 'span', html: num});
 		badge = me.badge;
+		originalNum = badge.num;
 		shouldUpdateNum = Ext.isDefined(num) && (badge.num != num);
 		Ext.apply(badge, {
 			num: Ext.isDefined(num) ? num : badge.num,
